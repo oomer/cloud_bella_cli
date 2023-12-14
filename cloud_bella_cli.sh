@@ -15,7 +15,7 @@ if [ $(ps ax | grep [s]sh-agent | wc -l) -gt 0 ] ; then
 else
     eval $(ssh-agent -s)
     if [ "$(ssh-add -l)" == "The agent has no identities." ] ; then
-        ssh-add ~/.ssh/id_25519
+        ssh-add ~/.ssh/id_ed25519
     fi
     trap "ssh-agent -k" exit
 fi
