@@ -10,7 +10,7 @@ render_sh="IyEvYmluL2Jhc2gKCm9zX25hbWU9JChhd2sgLUY9ICckMT09Ik5BTUUiIHsgcHJpbnQgJ
 # cache ssh credentials
 #eval 'ssh-agent'
 #ssh-add
-if [ $(ps ax | grep [s]sh-agent | wc -l) -gt 0 ] ; then
+if [ $(ps ax | grep ssh-agent | wc -l) -gt 1 ] ; then
     echo "ssh-agent is already running"
 else
     eval $(ssh-agent -s)
