@@ -3,9 +3,9 @@
 - [TODO] use BELLA_LICENSE_TXT in ~/.ssh/config
 - [TODO] support more than .png files
 
-A renderfarm is great for large projects and teams but the learning curve is high for a single artist. That being said, the Linux skills learned using cloud_bella_sh are the exact ones need for success with oomerfarm. 
+A renderfarm is great for large projects and teams but the learning curve is high for a single artist. That being said, the Linux skills learned using cloud_bella_cli.sh are the exact ones needed for success with oomerfarm. 
 
-***cloud_bella_cli.sh***: a helper script to run bella_cli in the cloud or home Linux server:
+***cloud_bella_cli.sh***: a helper script to run bella_cli in the cloud or on a home Linux server:
 
 These 4 options are presented in a 1980's MS-DOS style menu interface. ( really a 1970's Unix shell interface)
 - upload .bsz to server
@@ -67,7 +67,7 @@ porsche-907.bsz ring-brushed-dark-bg.bsz
 1) porsche-907.bsz	     3) back
 2) ring-brushed-dark-bg.bsz
 #? 1
-porsche-907.bsz                                                                              54%   41MB   5.6MB/s   00:06 ETA
+porsche-907.bsz  54%   41MB   5.6MB/s   00:06 ETA 
 ```
 
 ## To render cloud .bsz file(s)
@@ -109,3 +109,6 @@ Rendering started for: /root/porsche-907.bszi
 #? 4
 porsche-907.png                                                                             100%   15KB  90.7KB/s   00:00
 ```
+
+## Remember to terminate your servers
+On vultr.com stopped servers continue to get charged hourly because they hold on to the compute resources. Please terminate or destroy your server to avoid unexpected charges.
