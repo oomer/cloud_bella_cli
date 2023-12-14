@@ -42,7 +42,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBtbE/BDpqNB2wL36eWLDKcu9L/7bkiZYtdRvIj2dah5
 - Add money
 - Launch a Optimized Cloud Compute instance 
     - Choose **Alma** Linux 8.x
-    - attach your ssh **public** key ( never private )
+    - attach your ssh **public** key
     - disable **auto-backup**
     - disable **IPv6**
 - After server starts, make note of assigned **ip** address
