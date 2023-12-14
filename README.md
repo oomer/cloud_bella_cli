@@ -107,7 +107,7 @@ Rendering started for: /root/porsche-907.bszi
 1) upload    3) progress  5) set_user  7) set_port
 2) render    4) download  6) set_ip    8) quit
 #? 4
-porsche-907.png                                                                             100%   15KB  90.7KB/s   00:00
+porsche-907.png  100%   15KB  90.7KB/s   00:00
 ```
 
 ## Remember to terminate your servers
