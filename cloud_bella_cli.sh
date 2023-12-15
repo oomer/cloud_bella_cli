@@ -7,9 +7,12 @@ render_sh="IyEvYmluL2Jhc2gKCm9zX25hbWU9JChhd2sgLUY9ICckMT09Ik5BTUUiIHsgcHJpbnQgJ
 
 #echo ${render_sh} | base64 -d -i -
 
+pid_ssh_agent="$(pgrep ssh-agent)"
+if ! [ -z $pid_ssh_agent ]; then
+	kill $pid_ssh_agent
+fi
+
 # cache ssh credentials
-#eval 'ssh-agent'
-#ssh-add
 if [ $(ps ax | grep ssh-agent | wc -l) -gt 1 ] ; then
     echo "ssh-agent is already running"
 else
