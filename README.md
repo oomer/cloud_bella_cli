@@ -1,6 +1,5 @@
 # cloud_bella_cli
-[Alpha v0.1, work in progress]
-- [TODO] support more than .png files
+[Alpha v0.2, work in progress]
 
 >A renderfarm is great for large projects and teams but the learning curve is high for a single artist. That being said, the Linux skills learned using cloud_bella_cli.sh are the exact ones needed for success with oomerfarm. 
 

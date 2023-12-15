@@ -3,6 +3,7 @@
 user="root"
 port="22"
 systemd="1"
+image="png"
 
 render_sh="IyEvYmluL2Jhc2gKCm9zX25hbWU9JChhd2sgLUY9ICckMT09Ik5BTUUiIHsgcHJpbnQgJDIgO30nIC9ldGMvb3MtcmVsZWFzZSkKcmVkaGF0X3BsYXRmb3JtX2lkPSQoYXdrIC1GPSAnJDE9PSJQTEFURk9STV9JRCIgeyBwcmludCAkMiA7fScgL2V0Yy9vcy1yZWxlYXNlKQp1c2VyPXdob2FtaQplY2hvICR1c2VyCmlmICEgdGVzdCAtZiBiZWxsYV9jbGk7IHRoZW4KCWlmIFsgIiRyZWRoYXRfcGxhdGZvcm1faWQiID09ICJcInBsYXRmb3JtOmVsOFwiIiBdIHx8IFsgIiRyZWRoYXRfcGxhdGZvcm1faWQiID09ICJcInBsYXRmb3JtOmVsOVwiIiBdOyB0aGVuCgkJaWYgWyAke3VzZXJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWRuZiAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCWVsc2UKCQkJc3VkbyBkbmYgLXkgaW5zdGFsbCBtZXNhLXZ1bGthbi1kcml2ZXJzCgkJCXN1ZG8gZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCWZpCgllbHNlCgkJaWYgWyAke3VzZXJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWFwdCAteSB1cGRhdGUKCQkJYXB0IC15IGluc3RhbGwgbWVzYS12dWxrYW4tZHJpdmVycwoJCQlhcHQgLXkgaW5zdGFsbCBsaWJsMS1tZXNhLWdseAoJCQkjYXB0IC15IGluc3RhbGwgbGlieDExLTYKCQllbHNlCgkJCXN1ZG8gYXB0IC15IHVwZGF0ZQoJCQlzdWRvIGFwdCAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJc3VkbyBhcHQgLXkgaW5zdGFsbCBsaWJnbDEtbWVzYS1nbHgKCQkJI3N1ZG8gYXB0IC15IGluc3RhbGwgbGlieDExLTYKCQlmaQoJZmkKCWN1cmwgLU8gaHR0cHM6Ly9kb3dubG9hZHMuYmVsbGFyZW5kZXIuY29tL2JlbGxhX2NsaS0yMy42LjAudGFyLmd6Cgl0YXIgLXh2ZiBiZWxsYV9jbGktMjMuNi4wLnRhci5negpmaQoKYnN6X2ZpbGVzPX4vKi5ic3oKCmlmICEgdGVzdCAtZiAiYmVsbGEubG9nIiA7IHRoZW4KCWlkbGU9IjEiCmVsc2UKCWlzX2lkbGU9IiQocGdyZXAgYmVsbGFfY2xpKSIKCglpZiBbIC16ICR7aXNfaWRsZX0gXTsgdGhlbgoJCWlkbGU9IjEiCgllbHNlCgkJaWRsZT0iMCIKCWZpCmZpCgppZiAhIFsgLXogJHtCRUxMQV9QQVJTRV9GUkFHTUVOVH0gXTsgdGhlbgoJcGFyc2VGcmFnbWVudD0iLXBmOiR7QkVMTEFfUEFSU0VfRlJBR01FTlR9IgoJZWNobyAkcGFyc2VGcmFnbWVudAplbHNlCglwYXJzZUZyYWdtZW50PSIiCmZpCgoKaWYgWyAke2lkbGV9ID09ICIxIiBdOyB0aGVuCglmb3IgZWFjaCBpbiAkYnN6X2ZpbGVzCglkbwoJCWVjaG8gIlJlbmRlcmluZyBzdGFydGVkIGZvcjogJGVhY2giCgkJZWNobyAuL2JlbGxhX2NsaSAtaToiJGVhY2giICRwYXJzZUZyYWdtZW50IC1wZjoic2V0dGluZ3MudGhyZWFkcz0wOyIgIC1vZDoiLi8iIAoJCS4vYmVsbGFfY2xpIC1pOiIkZWFjaCIgJHBhcnNlRnJhZ21lbnQgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgPiBiZWxsYS5sb2cKCQlybSAke2VhY2h9Cglkb25lCmZpCg=="
 #echo ${render_sh} | base64 -d -i -
@@ -75,7 +76,7 @@ do
 			read -p "Enter: x.x.x.x:" render_ip
 
 		elif [[ $action == "settings" ]]; then
-			select setting in set_port set_user systemd back
+			select setting in set_image set_port set_user systemd back
 			do
 				break
 			done
@@ -92,6 +93,13 @@ do
 					if [ -z ${systemd} ]; then
 						systemd="1"
 					fi
+				elif [[ $setting == "set_image" ]]; then
+					read -p "Enter image extension no period: (default png):" image
+					if [ -z ${image} ]; then
+						image="png"
+					fi
+
+
 				else 
 					echo -e "\nCloud computer internet port"
 					read -p "Enter: default(22):" port
@@ -101,7 +109,7 @@ do
 				fi
 			fi
 		elif [[ $action == "download" ]]; then
-			scp -P ${port} ${user}@${render_ip}:./*.png ./
+			scp -P ${port} ${user}@${render_ip}:./*.${image} ./
 		else
 			exit
 
