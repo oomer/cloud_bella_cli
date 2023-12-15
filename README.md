@@ -1,9 +1,8 @@
 # cloud_bella_cli
 [Alpha v0.1, work in progress]
-- [TODO] use BELLA_LICENSE_TXT in ~/.ssh/config
 - [TODO] support more than .png files
 
-A renderfarm is great for large projects and teams but the learning curve is high for a single artist. That being said, the Linux skills learned using cloud_bella_cli.sh are the exact ones needed for success with oomerfarm. 
+>A renderfarm is great for large projects and teams but the learning curve is high for a single artist. That being said, the Linux skills learned using cloud_bella_cli.sh are the exact ones needed for success with oomerfarm. 
 
 ***cloud_bella_cli.sh***: a helper script to run bella_cli in the cloud or on a home Linux server:
 
@@ -40,7 +39,7 @@ Rent a Linux cloud server
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBtbE/BDpqNB2wL36eWLDKcu9L/7bkiZYtdRvIj2dah5 harvey@mycomputer
 ``````
 - Add money
-- Launch a Optimized Cloud Compute instance 
+- Launch an Optimized Cloud Compute instance 
     - Choose **Alma** Linux 8.x
     - attach your ssh **public** key
     - disable **auto-backup**
@@ -76,7 +75,7 @@ porsche-907.bsz  54%   41MB   5.6MB/s   00:06 ETA
 1) upload    3) progress  5) set_user  7) set_port
 2) render    4) download  6) set_ip    8) quit
 #? 2
-Rendering started for: /root/porsche-907.bszi
+Rendering started for: /root/porsche-907.bsz
 ```
 
 ## To check bella progress
@@ -109,6 +108,25 @@ Rendering started for: /root/porsche-907.bszi
 #? 4
 porsche-907.png  100%   15KB  90.7KB/s   00:00
 ```
+
+## To remove watermark
+create file ~/.ssh/config and add this line
+```sh
+SendEnv BELLA_LICENSE_TEXT
+```
+to ~/.zshrc (on MacOs) insert text from your bella.lic
+```sh
+export BELLA_LICENSE_TEXT="# Bella License
+owner:     oomer
+type:      FULL
+seats:     1
+nodes:     5
+version:   1
+expires:   1721874318 (Wed Jul 24 21:25:18 2024)
+key:       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+```
+
+
 
 ## Remember to terminate your servers
 On vultr.com stopped servers continue to get charged hourly because they hold on to the compute resources. Please terminate or destroy your server to avoid unexpected charges.

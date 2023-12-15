@@ -49,6 +49,8 @@ do
 		elif [[ $action == "progress" ]]; then
 			ssh ${user}@${render_ip} -p ${port} tail bella.log
 		elif [[ $action == "render" ]]; then
+			ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_LICENSE_TEXT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_LICENSE_TEXT' >> /etc/ssh/sshd_config"
+			ssh ${user}@${render_ip} -p ${port} "systemctl restart sshd"
 			ssh ${user}@${render_ip} -p ${port} "echo ${render_sh} | base64 --decode > render.sh"
 			ssh ${user}@${render_ip} -p ${port} bash render.sh &
 		elif [[ $action == "set_user" ]]; then
