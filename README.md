@@ -126,6 +126,16 @@ expires:   1721874318 (Wed Jul 24 21:25:18 2024)
 key:       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 ```
 
+## To insert parseFragment
+to file ~/.ssh/config insert this line
+```sh
+SendEnv BELLA_PARSE_FRAGMENT
+```
+to ~/.zshrc (on MacOs) insert your fragment
+```sh
+export BELLA_PARSE_FRAGMENT="camera.resolution=vec2(100,100);"
+```
+
 
 
 ## Remember to terminate your servers
