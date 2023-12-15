@@ -2,6 +2,7 @@
 
 user="root"
 port="22"
+systemd="1"
 
 render_sh="IyEvYmluL2Jhc2gKCm9zX25hbWU9JChhd2sgLUY9ICckMT09Ik5BTUUiIHsgcHJpbnQgJDIgO30nIC9ldGMvb3MtcmVsZWFzZSkKcmVkaGF0X3BsYXRmb3JtX2lkPSQoYXdrIC1GPSAnJDE9PSJQTEFURk9STV9JRCIgeyBwcmludCAkMiA7fScgL2V0Yy9vcy1yZWxlYXNlKQp1c2VyPXdob2FtaQplY2hvICR1c2VyCmlmICEgdGVzdCAtZiBiZWxsYV9jbGk7IHRoZW4KCWlmIFsgIiRyZWRoYXRfcGxhdGZvcm1faWQiID09ICJcInBsYXRmb3JtOmVsOFwiIiBdIHx8IFsgIiRyZWRoYXRfcGxhdGZvcm1faWQiID09ICJcInBsYXRmb3JtOmVsOVwiIiBdOyB0aGVuCgkJaWYgWyAke3VzZXJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWRuZiAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCWVsc2UKCQkJc3VkbyBkbmYgLXkgaW5zdGFsbCBtZXNhLXZ1bGthbi1kcml2ZXJzCgkJCXN1ZG8gZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCWZpCgllbHNlCgkJaWYgWyAke3VzZXJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWFwdCAteSB1cGRhdGUKCQkJYXB0IC15IGluc3RhbGwgbWVzYS12dWxrYW4tZHJpdmVycwoJCQlhcHQgLXkgaW5zdGFsbCBsaWJsMS1tZXNhLWdseAoJCQkjYXB0IC15IGluc3RhbGwgbGlieDExLTYKCQllbHNlCgkJCXN1ZG8gYXB0IC15IHVwZGF0ZQoJCQlzdWRvIGFwdCAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJc3VkbyBhcHQgLXkgaW5zdGFsbCBsaWJnbDEtbWVzYS1nbHgKCQkJI3N1ZG8gYXB0IC15IGluc3RhbGwgbGlieDExLTYKCQlmaQoJZmkKCWN1cmwgLU8gaHR0cHM6Ly9kb3dubG9hZHMuYmVsbGFyZW5kZXIuY29tL2JlbGxhX2NsaS0yMy42LjAudGFyLmd6Cgl0YXIgLXh2ZiBiZWxsYV9jbGktMjMuNi4wLnRhci5negpmaQoKYnN6X2ZpbGVzPX4vKi5ic3oKCmlmICEgdGVzdCAtZiAiYmVsbGEubG9nIiA7IHRoZW4KCWlkbGU9IjEiCmVsc2UKCWlzX2lkbGU9IiQocGdyZXAgYmVsbGFfY2xpKSIKCglpZiBbIC16ICR7aXNfaWRsZX0gXTsgdGhlbgoJCWlkbGU9IjEiCgllbHNlCgkJaWRsZT0iMCIKCWZpCmZpCgppZiAhIFsgLXogJHtCRUxMQV9QQVJTRV9GUkFHTUVOVH0gXTsgdGhlbgoJcGFyc2VGcmFnbWVudD0iLXBmOiR7QkVMTEFfUEFSU0VfRlJBR01FTlR9IgoJZWNobyAkcGFyc2VGcmFnbWVudAplbHNlCglwYXJzZUZyYWdtZW50PSIiCmZpCgoKaWYgWyAke2lkbGV9ID09ICIxIiBdOyB0aGVuCglmb3IgZWFjaCBpbiAkYnN6X2ZpbGVzCglkbwoJCWVjaG8gIlJlbmRlcmluZyBzdGFydGVkIGZvcjogJGVhY2giCgkJZWNobyAuL2JlbGxhX2NsaSAtaToiJGVhY2giICRwYXJzZUZyYWdtZW50IC1wZjoic2V0dGluZ3MudGhyZWFkcz0wOyIgIC1vZDoiLi8iIAoJCS4vYmVsbGFfY2xpIC1pOiIkZWFjaCIgJHBhcnNlRnJhZ21lbnQgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgPiBiZWxsYS5sb2cKCQlybSAke2VhY2h9Cglkb25lCmZpCg=="
 #echo ${render_sh} | base64 -d -i -
@@ -50,13 +51,22 @@ do
 			ssh ${user}@${render_ip} -p ${port} tail bella.log
 		elif [[ $action == "render" ]]; then
 			if [ ${user} == "root" ]; then
+				ssh ${user}@${render_ip} -p ${port} "sed -i /'AcceptEnv LANG LC_*'/d /etc/ssh/sshd_config"
 				ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_LICENSE_TEXT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_LICENSE_TEXT' >> /etc/ssh/sshd_config"
 				ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_PARSE_FRAGMENT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_PARSE_FRAGMENT' >> /etc/ssh/sshd_config"
-				ssh ${user}@${render_ip} -p ${port} "systemctl restart sshd"
+				if [ ${systemd} == "1" ]; then
+					ssh ${user}@${render_ip} -p ${port} "systemctl restart sshd"
+				else
+					ssh ${user}@${render_ip} -p ${port} "/etc/init.d/ssh restart"
+				fi
 			else
 				ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_LICENSE_TEXT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_LICENSE_TEXT' | sudo tee -a /etc/ssh/sshd_config"
 				ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_PARSE_FRAGMENT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_PARSE_FRAGMENT' | sudo tee -a /etc/ssh/sshd_config"
-				ssh ${user}@${render_ip} -p ${port} "sudo systemctl restart sshd"
+				if [ ${systemd} == "1" ]; then
+					ssh ${user}@${render_ip} -p ${port} "sudo systemctl restart sshd"
+				else
+					ssh ${user}@${render_ip} -p ${port} "sudo /etc/init.d/ssh restart"
+				fi
 			fi
 			ssh ${user}@${render_ip} -p ${port} "echo ${render_sh} | base64 --decode > render.sh"
 			ssh ${user}@${render_ip} -p ${port} bash render.sh &
@@ -65,7 +75,7 @@ do
 			read -p "Enter: x.x.x.x:" render_ip
 
 		elif [[ $action == "settings" ]]; then
-			select setting in set_port set_user back
+			select setting in set_port set_user systemd back
 			do
 				break
 			done
@@ -75,6 +85,12 @@ do
 					read -p "Enter: (default root):" user
 					if [ -z ${user} ]; then
 						user="root"
+					fi
+				elif [[ $setting == "systemd" ]]; then
+					echo -e "\nset to 0 for init.d"
+					read -p "Enter systemd: (default 1):" systemd
+					if [ -z ${systemd} ]; then
+						systemd="1"
 					fi
 				else 
 					echo -e "\nCloud computer internet port"
