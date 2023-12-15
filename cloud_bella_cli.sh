@@ -49,9 +49,15 @@ do
 		elif [[ $action == "progress" ]]; then
 			ssh ${user}@${render_ip} -p ${port} tail bella.log
 		elif [[ $action == "render" ]]; then
-			ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_LICENSE_TEXT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_LICENSE_TEXT' >> /etc/ssh/sshd_config"
-			ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_PARSE_FRAGMENT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_PARSE_FRAGMENT' >> /etc/ssh/sshd_config"
-			ssh ${user}@${render_ip} -p ${port} "systemctl restart sshd"
+			if [ ${user} == "root" ]; then
+				ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_LICENSE_TEXT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_LICENSE_TEXT' >> /etc/ssh/sshd_config"
+				ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_PARSE_FRAGMENT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_PARSE_FRAGMENT' >> /etc/ssh/sshd_config"
+				ssh ${user}@${render_ip} -p ${port} "systemctl restart sshd"
+			else
+				ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_LICENSE_TEXT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_LICENSE_TEXT' | sudo tee -a /etc/ssh/sshd_config"
+				ssh ${user}@${render_ip} -p ${port} "grep -qxF 'AcceptEnv BELLA_PARSE_FRAGMENT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_PARSE_FRAGMENT' | sudo tee -a /etc/ssh/sshd_config"
+				ssh ${user}@${render_ip} -p ${port} "sudo systemctl restart sshd"
+			fi
 			ssh ${user}@${render_ip} -p ${port} "echo ${render_sh} | base64 --decode > render.sh"
 			ssh ${user}@${render_ip} -p ${port} bash render.sh &
 		elif [[ $action == "server" ]]; then
@@ -59,7 +65,7 @@ do
 			read -p "Enter: x.x.x.x:" render_ip
 
 		elif [[ $action == "settings" ]]; then
-			select setting in set_ip set_port set_user back
+			select setting in set_port set_user back
 			do
 				break
 			done

@@ -109,7 +109,10 @@ Rendering started for: /root/porsche-907.bsz
 porsche-907.png  100%   15KB  90.7KB/s   00:00
 ```
 
-## To remove watermark
+## To remove watermark 
+
+>after this change open a fresh bash/zsh before running cloud_bella_cli 
+
 create file ~/.ssh/config and add this line
 ```sh
 SendEnv BELLA_LICENSE_TEXT
@@ -126,12 +129,15 @@ expires:   1721874318 (Wed Jul 24 21:25:18 2024)
 key:       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 ```
 
-## To insert parseFragment
+## To insert parseFragment 
+
+>after this change open a fresh bash/zsh before running cloud_bella_cli 
+
 to file ~/.ssh/config insert this line
 ```sh
 SendEnv BELLA_PARSE_FRAGMENT
 ```
-to ~/.zshrc (on MacOs) insert your fragment
+to ~/.zshrc (on MacOs) / to ~/.bashrc ( on Windows bash ) insert your fragment
 ```sh
 export BELLA_PARSE_FRAGMENT="camera.resolution=vec2(100,100);"
 ```
