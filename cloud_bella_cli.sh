@@ -4,7 +4,8 @@ user="root"
 port="22"
 systemd="1"
 image="png"
-render_sh="IyEvYmluL2Jhc2gKCm9zX25hbWU9JChhd2sgLUY9ICckMT09Ik5BTUUiIHsgcHJpbnQgJDIgO30nIC9ldGMvb3MtcmVsZWFzZSkKcmVkaGF0X3BsYXRmb3JtX2lkPSQoYXdrIC1GPSAnJDE9PSJQTEFURk9STV9JRCIgeyBwcmludCAkMiA7fScgL2V0Yy9vcy1yZWxlYXNlKQp1c2VyPSQod2hvYW1pKQplY2hvICR1c2VyCmlmICEgdGVzdCAtZiBiZWxsYV9jbGk7IHRoZW4KCWlmIFsgIiRyZWRoYXRfcGxhdGZvcm1faWQiID09ICJcInBsYXRmb3JtOmVsOFwiIiBdIHx8IFsgIiRyZWRoYXRfcGxhdGZvcm1faWQiID09ICJcInBsYXRmb3JtOmVsOVwiIiBdOyB0aGVuCgkJaWYgWyAke3VzZXJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWRuZiAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCWVsc2UKCQkJc3VkbyBkbmYgLXkgaW5zdGFsbCBtZXNhLXZ1bGthbi1kcml2ZXJzCgkJCXN1ZG8gZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCWZpCgllbHNlCgkJaWYgWyAke3VzZXJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWFwdCAteSB1cGRhdGUKCQkJYXB0IC15IGluc3RhbGwgbWVzYS12dWxrYW4tZHJpdmVycwoJCQlhcHQgLXkgaW5zdGFsbCBsaWJsMS1tZXNhLWdseAoJCQkjYXB0IC15IGluc3RhbGwgbGlieDExLTYKCQllbHNlCgkJCXN1ZG8gYXB0IC15IHVwZGF0ZQoJCQlzdWRvIGFwdCAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJc3VkbyBhcHQgLXkgaW5zdGFsbCBsaWJnbDEtbWVzYS1nbHgKCQkJI3N1ZG8gYXB0IC15IGluc3RhbGwgbGlieDExLTYKCQlmaQoJZmkKCWlmIFsgLXogJHtCRUxMQV9WRVJTSU9OfSBdOyB0aGVuCgkJY3VybCAtTyBodHRwczovL2Rvd25sb2Fkcy5iZWxsYXJlbmRlci5jb20vYmVsbGFfY2xpLTIzLjYuMC50YXIuZ3oKCQl0YXIgLXh2ZiBiZWxsYV9jbGktMjMuNi4wLnRhci5negoJZWxzZQoJCWN1cmwgLU8gaHR0cHM6Ly9kb3dubG9hZHMuYmVsbGFyZW5kZXIuY29tL2JlbGxhX2NsaS0ke0JFTExBX1ZFUlNJT059LnRhci5negoJCXRhciAteHZmIGJlbGxhX2NsaS0ke0JFTExBX1ZFUlNJT059LnRhci5negoJZmkKZmkKCmJzel9maWxlcz1+LyouYnN6CgppZiAhIHRlc3QgLWYgImJlbGxhLmxvZyIgOyB0aGVuCglpZGxlPSIxIgplbHNlCglpc19pZGxlPSIkKHBncmVwIGJlbGxhX2NsaSkiCgoJaWYgWyAteiAke2lzX2lkbGV9IF07IHRoZW4KCQlpZGxlPSIxIgoJZWxzZQoJCWlkbGU9IjAiCglmaQpmaQoKaWYgISBbIC16ICR7QkVMTEFfUEFSU0VfRlJBR01FTlR9IF07IHRoZW4KCXBhcnNlRnJhZ21lbnQ9Ii1wZjoke0JFTExBX1BBUlNFX0ZSQUdNRU5UfSIKCWVjaG8gJHBhcnNlRnJhZ21lbnQKZWxzZQoJcGFyc2VGcmFnbWVudD0iIgpmaQoKCmlmIFsgJHtpZGxlfSA9PSAiMSIgXTsgdGhlbgoJZm9yIGVhY2ggaW4gJGJzel9maWxlcwoJZG8KCQllY2hvICJSZW5kZXJpbmcgc3RhcnRlZCBmb3I6ICRlYWNoIgoJCWVjaG8gLi9iZWxsYV9jbGkgLWk6IiRlYWNoIiAkcGFyc2VGcmFnbWVudCAtcGY6InNldHRpbmdzLnRocmVhZHM9MDsiICAtb2Q6Ii4vIiAKCQkuL2JlbGxhX2NsaSAtaToiJGVhY2giICRwYXJzZUZyYWdtZW50IC1wZjoic2V0dGluZ3MudGhyZWFkcz0wOyIgIC1vZDoiLi8iID4gYmVsbGEubG9nCgkJcm0gJHtlYWNofQoJZG9uZQpmaQo="
+
+render_sh="IyEvYmluL2Jhc2gKCm9zX25hbWU9JChhd2sgLUY9ICckMT09Ik5BTUUiIHsgcHJpbnQgJDIgO30nIC9ldGMvb3MtcmVsZWFzZSkKcmVkaGF0X3BsYXRmb3JtX2lkPSQoYXdrIC1GPSAnJDE9PSJQTEFURk9STV9JRCIgeyBwcmludCAkMiA7fScgL2V0Yy9vcy1yZWxlYXNlKQp1c2VyPSQod2hvYW1pKQplY2hvICR1c2VyCmlmICEgdGVzdCAtZiBiZWxsYV9jbGk7IHRoZW4KCWlmIFsgIiRyZWRoYXRfcGxhdGZvcm1faWQiID09ICJcInBsYXRmb3JtOmVsOFwiIiBdIHx8IFsgIiRyZWRoYXRfcGxhdGZvcm1faWQiID09ICJcInBsYXRmb3JtOmVsOVwiIiBdOyB0aGVuCgkJaWYgWyAke3VzZXJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWRuZiAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCWVsc2UKCQkJc3VkbyBkbmYgLXkgaW5zdGFsbCBtZXNhLXZ1bGthbi1kcml2ZXJzCgkJCXN1ZG8gZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCWZpCgllbHNlCgkJaWYgWyAke3VzZXJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWFwdCAteSB1cGRhdGUKCQkJYXB0IC15IGluc3RhbGwgbWVzYS12dWxrYW4tZHJpdmVycwoJCQlhcHQgLXkgaW5zdGFsbCBsaWJnbDEtbWVzYS1nbHgKCQllbHNlCgkJCXN1ZG8gYXB0IC15IHVwZGF0ZQoJCQlzdWRvIGFwdCAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJc3VkbyBhcHQgLXkgaW5zdGFsbCBsaWJnbDEtbWVzYS1nbHgKCQlmaQoJZmkKCWlmIFsgLXogJHtCRUxMQV9WRVJTSU9OfSBdOyB0aGVuCgkJY3VybCAtTyBodHRwczovL2Rvd25sb2Fkcy5iZWxsYXJlbmRlci5jb20vYmVsbGFfY2xpLTIzLjYuMC50YXIuZ3oKCQl0YXIgLXh2ZiBiZWxsYV9jbGktMjMuNi4wLnRhci5negoJZWxzZQoJCWN1cmwgLU8gaHR0cHM6Ly9kb3dubG9hZHMuYmVsbGFyZW5kZXIuY29tL2JlbGxhX2NsaS0ke0JFTExBX1ZFUlNJT059LnRhci5negoJCXRhciAteHZmIGJlbGxhX2NsaS0ke0JFTExBX1ZFUlNJT059LnRhci5negoJZmkKZmkKCmJzel9maWxlcz1+LyouYnN6CgppZiAhIHRlc3QgLWYgImJlbGxhLmxvZyIgOyB0aGVuCglpZGxlPSIxIgplbHNlCglpc19pZGxlPSIkKHBncmVwIGJlbGxhX2NsaSkiCgoJaWYgWyAteiAke2lzX2lkbGV9IF07IHRoZW4KCQlpZGxlPSIxIgoJZWxzZQoJCWlkbGU9IjAiCglmaQpmaQoKaWYgISBbIC16ICR7QkVMTEFfUEFSU0VfRlJBR01FTlR9IF07IHRoZW4KCXBhcnNlRnJhZ21lbnQ9Ii1wZjoke0JFTExBX1BBUlNFX0ZSQUdNRU5UfSIKCWVjaG8gJHBhcnNlRnJhZ21lbnQKZWxzZQoJcGFyc2VGcmFnbWVudD0iIgpmaQoKCmlmIFsgJHtpZGxlfSA9PSAiMSIgXTsgdGhlbgoJZm9yIGVhY2ggaW4gJGJzel9maWxlcwoJZG8KCQllY2hvICJSZW5kZXJpbmcgc3RhcnRlZCBmb3I6ICRlYWNoIgoJCWVjaG8gLi9iZWxsYV9jbGkgLWk6IiRlYWNoIiAkcGFyc2VGcmFnbWVudCAtcGY6InNldHRpbmdzLnRocmVhZHM9MDsiICAtb2Q6Ii4vIiAKCQkuL2JlbGxhX2NsaSAtaToiJGVhY2giICRwYXJzZUZyYWdtZW50IC1wZjoic2V0dGluZ3MudGhyZWFkcz0wOyIgIC1vZDoiLi8iID4gYmVsbGEubG9nCgkJcm0gJHtlYWNofQoJZG9uZQpmaQo="
 
 #echo ${render_sh} | base64 -d -i - > render.sh
 
@@ -74,9 +75,22 @@ do
 			ssh ${user}@${render_ip} -p ${port} "echo ${render_sh} | base64 --decode > render.sh"
 			ssh ${user}@${render_ip} -p ${port} bash render.sh &
 		elif [[ $action == "server" ]]; then
-			echo -e "\nCloud computer internet address"
-			read -p "Enter: x.x.x.x:" render_ip
-
+			select setting in set_ip delete_images delete_bella_cli stop_bella back
+			do
+				break
+			done
+			if ! [ ${setting} == "back" ];then
+				if [[ $setting == "set_ip" ]]; then
+					echo -e "\nCloud computer internet address"
+					read -p "Enter: x.x.x.x:" render_ip
+				elif [[ $setting == "delete_images" ]]; then
+					ssh ${user}@${render_ip} -p ${port} "rm -f *.${image}"
+				elif [[ $setting == "delete_bella_cli" ]]; then
+					ssh ${user}@${render_ip} -p ${port} "rm -f bella_cli"
+				elif [[ $setting == "stop_bella" ]]; then
+					ssh ${user}@${render_ip} -p ${port} "pkill -2 -e bella_cli"
+				fi
+			fi
 		elif [[ $action == "settings" ]]; then
 			select setting in set_image set_port set_user systemd back
 			do
@@ -100,8 +114,6 @@ do
 					if [ -z ${image} ]; then
 						image="png"
 					fi
-
-
 				else 
 					echo -e "\nCloud computer internet port"
 					read -p "Enter: default(22):" port
@@ -112,6 +124,8 @@ do
 			fi
 		elif [[ $action == "download" ]]; then
 			scp -P ${port} ${user}@${render_ip}:./*.${image} ./
+		elif [[ $action == "parseFragment" ]]; then
+			echo "NOT implemented yet"
 		else
 			exit
 
