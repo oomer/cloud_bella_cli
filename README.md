@@ -84,7 +84,9 @@ porsche-907.bsz  54%   41MB   5.6MB/s   00:06 ETA
 
 ## To sequentially render uploaded .bsz file(s)
 
-- Runs in background ( to kill a running bella_cli just terminate the server)
+- Runs in background 
+- to stop a render, in **6) server** choose **stop_bella**
+    - bella_cli saves out current image
 - Will delete .bsz after a successful or a failed render.
 
 ```sh
@@ -118,6 +120,7 @@ Rendering started for: /root/porsche-907.bsz
 ```
 
 ## To download images ( default png , use settings to switch)
+- to clean up server, in **6) server** choose **delete_images**
 
 ```sh
 =================================================
