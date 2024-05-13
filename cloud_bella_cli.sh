@@ -1,13 +1,13 @@
 #!/bin/bash
 
-server_user="root"
-server_port="22"
-file_ext="png"
+server_user="bella"
+server_port="2512"
+image_ext="png"
 systemd="1"
 bsa64=""
 anim64=""
-
-render_sh="IyEvYmluL2Jhc2gKb3NfbmFtZT0kKGF3ayAtRj0gJyQxPT0iTkFNRSIgeyBwcmludCAkMiA7fScgL2V0Yy9vcy1yZWxlYXNlKQpwbGF0Zm9ybV9pZD0kKGF3ayAtRj0gJyQxPT0iUExBVEZPUk1fSUQiIHsgcHJpbnQgJDIgO30nIC9ldGMvb3MtcmVsZWFzZSkKdXNlcj0kKHdob2FtaSkKCmlmICEgdGVzdCAtZiBiZWxsYV9jbGk7IHRoZW4KCSMgUkhFTCA4LnggYW5kIDkueCAKCWlmIFsgIiRwbGF0Zm9ybV9pZCIgPT0gIlwicGxhdGZvcm06ZWw4XCIiIF0gfHwgWyAiJHBsYXRmb3JtX2lkIiA9PSAiXCJwbGF0Zm9ybTplbDlcIiIgXTsgdGhlbgoJCWlmIFsgJHt1c2VyfSA9PSAicm9vdCIgXTsgdGhlbgoJCQlkbmYgLXkgaW5zdGFsbCBtZXNhLXZ1bGthbi1kcml2ZXJzCgkJCWRuZiAteSBpbnN0YWxsIG1lc2EtbGliR0wKCQkJZG5mIC15IGluc3RhbGwgYmMKCQllbHNlCgkJCXN1ZG8gZG5mIC15IGluc3RhbGwgbWVzYS12dWxrYW4tZHJpdmVycwoJCQlzdWRvIGRuZiAteSBpbnN0YWxsIG1lc2EtbGliR0wKCQkJc3VkbyBkbmYgLXkgaW5zdGFsbCBiYwoJCWZpCgkjICBEZWJpYW4gYmFzZWQKCWVsc2UKCQlpZiBbICR7dXNlcn0gPT0gInJvb3QiIF07IHRoZW4KCQkJYXB0IC15IHVwZGF0ZQoJCQlhcHQgLXkgaW5zdGFsbCBtZXNhLXZ1bGthbi1kcml2ZXJzCgkJCWFwdCAteSBpbnN0YWxsIGxpYmdsMS1tZXNhLWdseAoJCQlhcHQgLXkgaW5zdGFsbCBiYwoJCWVsc2UKCQkJc3VkbyBhcHQgLXkgdXBkYXRlCgkJCXN1ZG8gYXB0IC15IGluc3RhbGwgbWVzYS12dWxrYW4tZHJpdmVycwoJCQlzdWRvIGFwdCAteSBpbnN0YWxsIGxpYmdsMS1tZXNhLWdseAoJCQlzdWRvIGFwdCAteSBpbnN0YWxsIGJjCgkJZmkKCWZpCglpZiBbIC16ICR7QkVMTEFfVkVSU0lPTn0gXTsgdGhlbgoJCWN1cmwgLU8gaHR0cHM6Ly9kb3dubG9hZHMuYmVsbGFyZW5kZXIuY29tL2JlbGxhX2NsaS0yMy42LjAudGFyLmd6CgkJdGFyIC14dmYgYmVsbGFfY2xpLTIzLjYuMC50YXIuZ3oKCWVsc2UKCQljdXJsIC1PIGh0dHBzOi8vZG93bmxvYWRzLmJlbGxhcmVuZGVyLmNvbS9iZWxsYV9jbGktJHtCRUxMQV9WRVJTSU9OfS50YXIuZ3oKCQl0YXIgLXh2ZiBiZWxsYV9jbGktJHtCRUxMQV9WRVJTSU9OfS50YXIuZ3oKCWZpCmZpCgpic3pfZmlsZXM9Ki5ic3oKCmlmICEgdGVzdCAtZiAiYmVsbGEubG9nIiA7IHRoZW4KCWlkbGU9IjEiCmVsc2UKCWlzX2lkbGU9IiQocGdyZXAgYmVsbGFfY2xpKSIKCglpZiBbIC16ICR7aXNfaWRsZX0gXTsgdGhlbgoJCWlkbGU9IjEiCgllbHNlCgkJaWRsZT0iMCIKCWZpCmZpCgoKaWYgWyAke2lkbGV9ID09ICIxIiBdOyB0aGVuCglmb3IgZWFjaCBpbiAkYnN6X2ZpbGVzCglkbwoJCXByZWZpeD0ke2VhY2glLip9CgkJZWNobyAiUmVuZGVyaW5nIHN0YXJ0ZWQgZm9yOiAkZWFjaCIKCQlpZiBbICIke0JFTExBX1BBUlNFX0ZSQUdNRU5UOi1udWxsfSIgPT0gIm51bGwiIF07IHRoZW4KCQkJaWYgdGVzdCAtZiBjbG91ZF9iZWxsYV9jbGkuYW5pbTsgdGhlbgoJCQkJYW5pbTFzdGFydGxpbmU9JChzZWQgJzEhZCcgY2xvdWRfYmVsbGFfY2xpLmFuaW0pCgkJCQlhdHRyPSR7YW5pbTFzdGFydGxpbmUlPSp9CgkJCQlhbmltMXN0YXJ0MD0ke2FuaW0xc3RhcnRsaW5lIyo9fQoJCQkJYW5pbTFzdGFydD0ke2FuaW0xc3RhcnQwOjA6JHsjYW5pbTFzdGFydDB9LTJ9CgkJCQlhbmltMWVuZGxpbmU9JChzZWQgJzIhZCcgY2xvdWRfYmVsbGFfY2xpLmFuaW0pCgkJCQlhbmltMWVuZDA9JHthbmltMWVuZGxpbmUjKj19CgkJCQlhbmltMWVuZD0ke2FuaW0xZW5kMDowOiR7I2FuaW0xZW5kMH0tMn0KCQkJCWZyYW1lcz0kKHNlZCAnMyFkJyBjbG91ZF9iZWxsYV9jbGkuYW5pbSkKCQkJCWZvciAoKGkgPSAwIDsgaSA8PSAkZnJhbWVzIDsgaSsrICkpOyBkbyAKCQkJCQlwYWRkZWQ9JChwcmludGYgIiUwNGQiICRpKQoJCQkJCWFuaW1hdGVkPSQoZWNobyAic2NhbGU9NTsgKCgke2FuaW0xZW5kfS0oJHthbmltMXN0YXJ0fSkpKigkaS8ke2ZyYW1lc30uMCkpKyR7YW5pbTFzdGFydH0iIHwgYmMpCgkJCQkJaWYgWyAke2FuaW1hdGVkOjA6MX0gPT0gIi4iIF07IHRoZW4KCQkJCQkJYW5pbWF0ZWQ9IjAke2FuaW1hdGVkfSIKCQkJCQlmaQoJCQkJCWVjaG8gInNjYWxlPTU7ICgke2FuaW0xZW5kfS0oJHthbmltMXN0YXJ0fSkpKigkaS8kZnJhbWVzKSske2FuaW0xc3RhcnR9IiB8IGJjCgkJCQkJZWNobyAuL2JlbGxhX2NsaSAtaToiJGVhY2giIC1vbjoiJHtwcmVmaXh9JHtwYWRkZWR9IiAtcGY6IiR7YXR0cn09JHthbmltYXRlZH1mOyIgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgIAoJCQkJCS4vYmVsbGFfY2xpIC1pOiIkZWFjaCIgLW9uOiIke3ByZWZpeH0ke3BhZGRlZH0iIC1wZjoiJHthdHRyfT0ke2FuaW1hdGVkfWY7IiAtcGY6InNldHRpbmdzLnRocmVhZHM9MDsiICAtb2Q6Ii4vIiAgPiBiZWxsYS5sb2cKCQkJCWRvbmUKCQkJZWxpZiB0ZXN0IC1mIGNsb3VkX2JlbGxhX2NsaS5ic2E7IHRoZW4KCQkJCWVjaG8gLi9iZWxsYV9jbGkgLWk6IiRlYWNoIiAtcGY6Ii4vY2xvdWRfYmVsbGFfY2xpLmJzYSIgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgIAoJCQkJLi9iZWxsYV9jbGkgLWk6IiRlYWNoIiAtcGY6Ii4vY2xvdWRfYmVsbGFfY2xpLmJzYSIgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgID4gYmVsbGEubG9nCgoJCQllbHNlCgkJCQllY2hvIC4vYmVsbGFfY2xpIC1pOiIkZWFjaCIgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgIAoJCQkJLi9iZWxsYV9jbGkgLWk6IiRlYWNoIiAtcGY6InNldHRpbmdzLnRocmVhZHM9MDsiICAtb2Q6Ii4vIiAgPiBiZWxsYS5sb2cKCQkJZmkKCQllbHNlCgkJCWlmIHRlc3QgLWYgY2xvdWRfYmVsbGFfY2xpLmFuaW07IHRoZW4KCQkJCWFuaW0xc3RhcnRsaW5lPSQoc2VkICcxIWQnIGNsb3VkX2JlbGxhX2NsaS5hbmltKQoJCQkJYXR0cj0ke2FuaW0xc3RhcnRsaW5lJT0qfQoJCQkJYW5pbTFzdGFydDA9JHthbmltMXN0YXJ0bGluZSMqPX0KCQkJCWFuaW0xc3RhcnQ9JHthbmltMXN0YXJ0MDowOiR7I2FuaW0xc3RhcnQwfS0yfQoJCQkJYW5pbTFlbmRsaW5lPSQoc2VkICcyIWQnIGNsb3VkX2JlbGxhX2NsaS5hbmltKQoJCQkJYW5pbTFlbmQwPSR7YW5pbTFlbmRsaW5lIyo9fQoJCQkJYW5pbTFlbmQ9JHthbmltMWVuZDA6MDokeyNhbmltMWVuZDB9LTJ9CgkJCQlmcmFtZXM9JChzZWQgJzMhZCcgY2xvdWRfYmVsbGFfY2xpLmFuaW0pCgkJCQlmb3IgKChpID0gMCA7IGkgPD0gJHtmcmFtZXN9IDsgaSsrICkpOyBkbyAKCQkJCQlwYWRkZWQ9JChwcmludGYgIiUwNGQiICRpKQoJCQkJCWVjaG8gInNjYWxlPTU7ICgke2FuaW0xZW5kfS0oJHthbmltMXN0YXJ0fSkpKigke2l9LyR7ZnJhbWVzfS4wKSske2FuaW0xc3RhcnR9IiB8IGJjCgkJCQkJYW5pbWF0ZWQ9JChlY2hvICJzY2FsZT01OyAoKCR7YW5pbTFlbmR9LSgke2FuaW0xc3RhcnR9KSkqKCR7aX0vJHtmcmFtZXN9LjApKSske2FuaW0xc3RhcnR9IiB8IGJjKQoJCQkJCWlmIFsgJHthbmltYXRlZDowOjF9ID09ICIuIiBdOyB0aGVuCgkJCQkJCWFuaW1hdGVkPSIwJHthbmltYXRlZH0iCgkJCQkJZmkKCQkJCQllY2hvIC4vYmVsbGFfY2xpIC1pOiIkZWFjaCIgLW9uOiIke3ByZWZpeH0ke3BhZGRlZH0iIC1wZjoiJHtCRUxMQV9QQVJTRV9GUkFHTUVOVH0iIC1wZjoiJHthdHRyfT0ke2FuaW1hdGVkfWY7IiAtcGY6InNldHRpbmdzLnRocmVhZHM9MDsiICAtb2Q6Ii4vIiAKCQkJCQkuL2JlbGxhX2NsaSAtaToiJGVhY2giIC1vbjoiJHtwcmVmaXh9JHtwYWRkZWR9IiAtcGY6IiR7QkVMTEFfUEFSU0VfRlJBR01FTlR9IiAtcGY6IiR7YXR0cn09JHthbmltYXRlZH1mOyIgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgPiBiZWxsYS5sb2cKCQkJCWRvbmUJCgkJCWVsaWYgdGVzdCAtZiBjbG91ZF9iZWxsYV9jbGkuYnNhOyB0aGVuCgkJCQllY2hvIC4vYmVsbGFfY2xpIC1pOiIkZWFjaCIgLXBmOiIke0JFTExBX1BBUlNFX0ZSQUdNRU5UfSIgLXBmOiIuL2Nsb3VkX2JlbGxhX2NsaS5ic2EiIC1wZjoic2V0dGluZ3MudGhyZWFkcz0wOyIgIC1vZDoiLi8iIAoJCQkJLi9iZWxsYV9jbGkgLWk6IiRlYWNoIiAtcGY6IiR7QkVMTEFfUEFSU0VfRlJBR01FTlR9IiAtcGY6Ii4vY2xvdWRfYmVsbGFfY2xpLmJzYSIgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgPiBiZWxsYS5sb2cKCQkJZWxzZQoJCQkJZWNobyAuL2JlbGxhX2NsaSAtaToiJGVhY2giIC1wZjoiJHtCRUxMQV9QQVJTRV9GUkFHTUVOVH0iIC1wZjoic2V0dGluZ3MudGhyZWFkcz0wOyIgIC1vZDoiLi8iIAoJCQkJLi9iZWxsYV9jbGkgLWk6IiRlYWNoIiAtcGY6IiR7QkVMTEFfUEFSU0VfRlJBR01FTlR9IiAtcGY6InNldHRpbmdzLnRocmVhZHM9MDsiICAtb2Q6Ii4vIiA+IGJlbGxhLmxvZwoJCQlmaQoJCWZpCgkJcm0gJHtlYWNofQoJZG9uZQpmaQo="
+#cat render.sh | base64
+render_sh="IyEvYmluL2Jhc2gKb3NfbmFtZT0kKGF3ayAtRj0gJyQxPT0iTkFNRSIgeyBwcmludCAkMiA7fScgL2V0Yy9vcy1yZWxlYXNlKQpwbGF0Zm9ybV9pZD0kKGF3ayAtRj0gJyQxPT0iUExBVEZPUk1fSUQiIHsgcHJpbnQgJDIgO30nIC9ldGMvb3MtcmVsZWFzZSkKdXNlcj0kKHdob2FtaSkKCmlmICEgdGVzdCAtZiBiZWxsYV9jbGk7IHRoZW4KCSMgUkhFTCA4LnggYW5kIDkueCAKCWlmIFsgIiRwbGF0Zm9ybV9pZCIgPT0gIlwicGxhdGZvcm06ZWw4XCIiIF0gfHwgWyAiJHBsYXRmb3JtX2lkIiA9PSAiXCJwbGF0Zm9ybTplbDlcIiIgXTsgdGhlbgoJCWlmIFsgJHtVU0VSfSA9PSAiYmVsbGEiIF07IHRoZW4KCQkJZWNobyAiYnlwYXNzIgoJCWVsaWYgWyAke1VTRVJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWRuZiAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCQlkbmYgLXkgaW5zdGFsbCBiYwoJCWVsc2UKCQkJc3VkbyBkbmYgLXkgaW5zdGFsbCBtZXNhLXZ1bGthbi1kcml2ZXJzCgkJCXN1ZG8gZG5mIC15IGluc3RhbGwgbWVzYS1saWJHTAoJCQlzdWRvIGRuZiAteSBpbnN0YWxsIGJjCgkJZmkKCSMgIERlYmlhbiBiYXNlZAoJZWxzZQoJCWlmIFsgJHtVU0VSfSA9PSAiYmVsbGEiIF07IHRoZW4KCQkJZWNobyAiYnlwYXNzIgoJCWVsaWYgWyAke1VTRVJ9ID09ICJyb290IiBdOyB0aGVuCgkJCWFwdCAteSB1cGRhdGUKCQkJYXB0IC15IGluc3RhbGwgbWVzYS12dWxrYW4tZHJpdmVycwoJCQlhcHQgLXkgaW5zdGFsbCBsaWJnbDEtbWVzYS1nbHgKCQkJYXB0IC15IGluc3RhbGwgYmMKCQllbHNlCgkJCXN1ZG8gYXB0IC15IHVwZGF0ZQoJCQlzdWRvIGFwdCAteSBpbnN0YWxsIG1lc2EtdnVsa2FuLWRyaXZlcnMKCQkJc3VkbyBhcHQgLXkgaW5zdGFsbCBsaWJnbDEtbWVzYS1nbHgKCQkJc3VkbyBhcHQgLXkgaW5zdGFsbCBiYwoJCWZpCglmaQoJaWYgWyAteiAke0JFTExBX1ZFUlNJT059IF07IHRoZW4KCQljdXJsIC1PIGh0dHBzOi8vZG93bmxvYWRzLmJlbGxhcmVuZGVyLmNvbS9iZWxsYV9jbGktMjMuNi4wLnRhci5negoJCXRhciAteHZmIGJlbGxhX2NsaS0yMy42LjAudGFyLmd6CgllbHNlCgkJY3VybCAtTyBodHRwczovL2Rvd25sb2Fkcy5iZWxsYXJlbmRlci5jb20vYmVsbGFfY2xpLSR7QkVMTEFfVkVSU0lPTn0udGFyLmd6CgkJdGFyIC14dmYgYmVsbGFfY2xpLSR7QkVMTEFfVkVSU0lPTn0udGFyLmd6CglmaQpmaQoKYnN6X2ZpbGVzPSouYnN6CgppZiAhIHRlc3QgLWYgImJlbGxhLmxvZyIgOyB0aGVuCglpZGxlPSIxIgplbHNlCglpc19pZGxlPSIkKHBncmVwIGJlbGxhX2NsaSkiCgoJaWYgWyAteiAke2lzX2lkbGV9IF07IHRoZW4KCQlpZGxlPSIxIgoJZWxzZQoJCWlkbGU9IjAiCglmaQpmaQoKCmlmIFsgJHtpZGxlfSA9PSAiMSIgXTsgdGhlbgoJZm9yIGVhY2ggaW4gJGJzel9maWxlcwoJZG8KCQlwcmVmaXg9JHtlYWNoJS4qfQoJCWVjaG8gIlJlbmRlcmluZyBzdGFydGVkIGZvcjogJGVhY2giCgkJaWYgdGVzdCAtZiBjbG91ZF9iZWxsYV9jbGkuYW5pbTsgdGhlbgoJCQlhbmltMXN0YXJ0bGluZT0kKHNlZCAnMSFkJyBjbG91ZF9iZWxsYV9jbGkuYW5pbSkKCQkJYXR0cj0ke2FuaW0xc3RhcnRsaW5lJT0qfQoJCQlhbmltMXN0YXJ0MD0ke2FuaW0xc3RhcnRsaW5lIyo9fQoJCQlhbmltMXN0YXJ0PSR7YW5pbTFzdGFydDA6MDokeyNhbmltMXN0YXJ0MH0tMn0KCQkJYW5pbTFlbmRsaW5lPSQoc2VkICcyIWQnIGNsb3VkX2JlbGxhX2NsaS5hbmltKQoJCQlhbmltMWVuZDA9JHthbmltMWVuZGxpbmUjKj19CgkJCWFuaW0xZW5kPSR7YW5pbTFlbmQwOjA6JHsjYW5pbTFlbmQwfS0yfQoJCQlmcmFtZXM9JChzZWQgJzMhZCcgY2xvdWRfYmVsbGFfY2xpLmFuaW0pCgkJCWZvciAoKGkgPSAwIDsgaSA8PSAke2ZyYW1lc30gOyBpKysgKSk7IGRvIAoJCQkJcGFkZGVkPSQocHJpbnRmICIlMDRkIiAkKChpKzEpKSkKCQkJCWVjaG8gInNjYWxlPTU7ICgke2FuaW0xZW5kfS0oJHthbmltMXN0YXJ0fSkpKigke2l9LyR7ZnJhbWVzfS4wKSske2FuaW0xc3RhcnR9IiB8IGJjCgkJCQlhbmltYXRlZD0kKGVjaG8gInNjYWxlPTU7ICgoJHthbmltMWVuZH0tKCR7YW5pbTFzdGFydH0pKSooJHtpfS8ke2ZyYW1lc30uMCkpKyR7YW5pbTFzdGFydH0iIHwgYmMpCgkJCQlpZiBbICR7YW5pbWF0ZWQ6MDoxfSA9PSAiLiIgXTsgdGhlbgoJCQkJCWFuaW1hdGVkPSIwJHthbmltYXRlZH0iCgkJCQllbGlmIFsgJHthbmltYXRlZDowOjJ9ID09ICItLiIgXTsgdGhlbgoJCQkJCWFuaW1hdGVkPSItMCR7YW5pbWF0ZWQ6MX0iCgkJCQlmaQoJCQkJZWNobyAuL2JlbGxhX2NsaSAtaToiJGVhY2giIC1vbjoiJHtwcmVmaXh9JHtwYWRkZWR9IiAtcGY6IiR7QkVMTEFfUEFSU0VfRlJBR01FTlR9IiAtcGY6IiR7YXR0cn09JHthbmltYXRlZH1mOyIgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgCgkJCQkuL2JlbGxhX2NsaSAtaToiJGVhY2giIC1vbjoiJHtwcmVmaXh9JHtwYWRkZWR9IiAtcGY6IiR7QkVMTEFfUEFSU0VfRlJBR01FTlR9IiAtcGY6IiR7YXR0cn09JHthbmltYXRlZH1mOyIgLXBmOiJzZXR0aW5ncy50aHJlYWRzPTA7IiAgLW9kOiIuLyIgPiBiZWxsYS5sb2cKCQkJZG9uZQkKCQllbHNlCgoJCQkuL2JlbGxhX2NsaSAtaToiJHtlYWNofSIgLXBmOiIke0JFTExBX1BBUlNFX0ZSQUdNRU5UfSIgLXBmOiIke2luc2VydDF9IiAtcGY6InNldHRpbmdzLnRocmVhZHM9MDsiIC1vZDoiLi8iID4gYmVsbGEubG9nCgkJZmkKCQlybSAke2VhY2h9Cglkb25lCmZpCg=="
 
 #echo ${render_sh} | base64 -d -i - > render.sh
 
@@ -60,12 +60,16 @@ do
 		elif [[ $action == "progress" ]]; then
 			ssh ${server_user}@${server_ip} -p ${server_port} tail bella.log
 		elif [[ $action == "render" ]]; then
-			if [ ${server_user} == "root" ]; then
+			vast_host=$(ssh ${server_user}@${server_ip} -p ${server_port} test -f .vast_containerlabel; echo $?)
+			if [ ${server_user} == "bella" ]; then
+				echo "bypass"
+			elif [ ${server_user} == "root" ]; then
 				ssh ${server_user}@${server_ip} -p ${server_port} "sed -i /'AcceptEnv LANG LC_*'/d /etc/ssh/sshd_config"
 				ssh ${server_user}@${server_ip} -p ${server_port} "grep -qxF 'AcceptEnv BELLA_LICENSE_TEXT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_LICENSE_TEXT' >> /etc/ssh/sshd_config"
 				ssh ${server_user}@${server_ip} -p ${server_port} "grep -qxF 'AcceptEnv BELLA_PARSE_FRAGMENT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_PARSE_FRAGMENT' >> /etc/ssh/sshd_config"
 				ssh ${server_user}@${server_ip} -p ${server_port} "grep -qxF 'AcceptEnv BELLA_VERSION' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_VERSION' >> /etc/ssh/sshd_config"
-				if [ ${systemd} == "1" ]; then
+				echo -e "\n${vast_host}"
+				if [ ${vast_host} == "1" ]; then
 					ssh ${server_user}@${server_ip} -p ${server_port} "systemctl restart sshd"
 				else
 					ssh ${server_user}@${server_ip} -p ${server_port} "/etc/init.d/ssh restart"
@@ -74,7 +78,8 @@ do
 				ssh ${server_user}@${server_ip} -p ${server_port} "grep -qxF 'AcceptEnv BELLA_LICENSE_TEXT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_LICENSE_TEXT' | sudo tee -a /etc/ssh/sshd_config"
 				ssh ${server_user}@${server_ip} -p ${server_port} "grep -qxF 'AcceptEnv BELLA_PARSE_FRAGMENT' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_PARSE_FRAGMENT' | sudo tee -a /etc/ssh/sshd_config"
 				ssh ${server_user}@${server_ip} -p ${server_port} "grep -qxF 'AcceptEnv BELLA_VERSION' /etc/ssh/sshd_config || echo 'AcceptEnv BELLA_VERSION' | sudo tee -a /etc/ssh/sshd_config"
-				if [ ${systemd} == "1" ]; then
+				echo -e "\n${vast_host}"
+				if [ ${vast_host} == "1" ]; then
 					ssh ${server_user}@${server_ip} -p ${server_port} "sudo systemctl restart sshd"
 				else
 					ssh ${server_user}@${server_ip} -p ${server_port} "sudo /etc/init.d/ssh restart"
@@ -94,7 +99,7 @@ do
 
 			ssh ${server_user}@${server_ip} -p ${server_port} "echo ${render_sh} | base64 --decode > render.sh"
 			ssh ${server_user}@${server_ip} -p ${server_port} "echo ${pf64} | base64 --decode > pf.txt"
-			ssh ${server_user}@${server_ip} -p ${server_port} bash render.sh &
+			ssh ${server_user}@${server_ip} -p ${server_port} "nohup bash render.sh >./nohup.out 2>./nohup.err &"
 		elif [[ $action == "server" ]]; then
 			select setting in set_server set_port set_user systemd delete_files delete_bella_cli stop_bella back
 			do
@@ -146,15 +151,15 @@ do
 			done
 			if ! [ ${setting} == "back" ];then
 				if [[ $setting == "download_extension" ]]; then
-					read -p "Enter download extension no period: (default png):" download_ext
-					if [ -z ${download_ext} ]; then
-						download_ext="png"
+					read -p "Enter download extension no period: (default png):" image_ext
+					if [ -z ${image_ext} ]; then
+						image_ext="png"
 					fi
 				fi
 			fi
 		elif [[ $action == "download" ]]; then
 			echo "Downloading *.${file_ext}"
-			scp -P ${server_port} ${server_user}@${server_ip}:./*.${file_ext} ./
+			scp -P ${server_port} ${server_user}@${server_ip}:./*.${image_ext} ./
 
 		elif [[ $action == "advanced" ]]; then
 			select advanced in bsa anim cleanup_server back
