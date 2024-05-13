@@ -1,7 +1,7 @@
 #!/bin/bash
 
-server_user="bella"
-server_port="2512"
+server_user="root"
+server_port="22"
 image_ext="png"
 systemd="1"
 bsa64=""
